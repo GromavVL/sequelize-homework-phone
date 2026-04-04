@@ -1,6 +1,6 @@
 const http = require('http');
 const app = require('./app');
-require('./sandbox');
+// require('./sandbox');
 
 const PORT = process.env.PORT || 5000;
 const HOST = process.env.HOST || 'localhost';

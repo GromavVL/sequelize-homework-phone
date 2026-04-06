@@ -10,11 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       model: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(64),
         allowNull: false
       },
       brand: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(32),
         allowNull: false
       },
       year_production: {
@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false
       },
       cpu: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(64),
         allowNull: false
       },
       screen_diagonal: {
@@ -47,8 +47,15 @@ module.exports = {
         type: Sequelize.DATE
       }
     })
+
+    await queryInterface.sequelize.query(
+      `ALTER TABLE "Phones"
+        ADD CONSTRAINT "chk_phones_model_length" CHECK (CHAR_LENGTH(model) >= 2),
+        ADD CONSTRAINT "chk_phones_brand_length" CHECK (CHAR_LENGTH(brand) >= 2),
+        ADD CONSTRAINT "chk_phones_cpu_length"   CHECK (CHAR_LENGTH(cpu) >= 2);`
+    )
   },
-  async down (queryInterface, Sequelize) {
+  async down (queryInterface) {
     await queryInterface.dropTable('Phones')
   }
 }

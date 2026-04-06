@@ -1,5 +1,5 @@
-'use strict'
-const { Model } = require('sequelize')
+'use strict';
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Phone extends Model {
     /**
@@ -16,43 +16,40 @@ module.exports = (sequelize, DataTypes) => {
       model: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: [3, 32]
-        }
       },
       brand: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [3, 32]
-        }
+          len: [2, 32],
+        },
       },
       year_production: {
         type: DataTypes.DATEONLY,
-        allowNull: false
+        allowNull: false,
       },
       size_ram: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       cpu: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       screen_diagonal: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       is_nfc: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: false
-      }
+        defaultValue: false,
+      },
     },
     {
       sequelize,
-      modelName: 'Phone'
+      modelName: 'Phone',
     }
-  )
-  return Phone
-}
+  );
+  return Phone;
+};

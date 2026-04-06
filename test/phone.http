@@ -1,0 +1,64 @@
+GET http://localhost:5000/api/phone?page=1&results=5
+
+# 404
+GET http://localhost:5000/api/phone?page=f&results=s
+
+
+GET http://localhost:5000/api/phone/4
+
+# 404
+GET http://localhost:5000/api/phone/1000
+
+
+POST http://localhost:5000/api/phone
+Content-Type: application/json
+
+{
+  "model": "18d",
+  "brand": "OnePlus",
+  "year_production": "2024-01-01",
+  "size_ram": "3 GB",
+  "cpu": "Snapdragon 8 Gen 2",
+  "screen_diagonal": "6.78",
+  "is_nfc": true
+}
+
+# 500
+POST http://localhost:5000/api/phone
+Content-Type: application/json
+
+{
+  "model": "1",
+  "brand": "OnePlus",
+  "year_production": "2024-01-01",
+  "size_ram": "3 GB",
+  "cpu": "Snapdragon 8 Gen 2",
+}
+
+
+
+PATCH http://localhost:5000/api/phone/2
+Content-Type: application/json
+
+{
+  "model": "17A",
+  "brand": "Samsung",
+  "year_production": "2025-01-01",
+  "size_ram": "8",
+  "cpu": "Snapdragon 8 Gen 2",
+  "screen_diagonal": "6.3",
+  "is_nfc": true
+}
+
+# 422
+PATCH http://localhost:5000/api/phone/2
+Content-Type: application/json
+
+{
+  "is_nfc": 45
+}
+
+DELETE http://localhost:5000/api/phone/6
+
+# 404
+DELETE http://localhost:5000/api/phone/1000

@@ -58,7 +58,7 @@ Content-Type: application/json
   "is_nfc": 45
 }
 
-DELETE http://localhost:5000/api/phone/6
+DELETE http://localhost:5000/api/phone/7
 
 # 404
 DELETE http://localhost:5000/api/phone/1000

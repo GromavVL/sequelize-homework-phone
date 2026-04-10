@@ -8,7 +8,7 @@ module.exports.getPhones = async (req, res, next) => {
       attributes: { exclude: ['createdAt', 'updatedAt'] },
       limit,
       offset,
-      order: ['id'],
+      order: [['id', ASC]],
     });
 
     if (!phonesAll.length) {

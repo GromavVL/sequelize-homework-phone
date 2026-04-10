@@ -38,11 +38,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'Phone',
+          model: 'Phones',
           key: 'id',
         },
-        onDelete: 'RESTRICT',
-        onUpdate: 'CASCADE',
       },
     },
     {

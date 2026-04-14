@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       Phone.hasMany(models.Preorder, {
-        foreignKey: 'phone_id',
+        foreignKey: 'phoneId',
       });
     }
   }
@@ -26,11 +26,11 @@ module.exports = (sequelize, DataTypes) => {
           len: [2, 32],
         },
       },
-      year_production: {
+      yearProduction: {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      size_ram: {
+      sizeRam: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -38,22 +38,24 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      screen_diagonal: {
+      screenDiagonal: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      is_nfc: {
+      isNfc: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false,
       },
-      image_phone: {
+      imagePhone: {
         type: DataTypes.STRING,
       },
     },
     {
       sequelize,
       modelName: 'Phone',
+      tableName: 'Phones',
+      underscored: true,
     }
   );
   return Phone;

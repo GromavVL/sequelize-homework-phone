@@ -16,11 +16,11 @@ Content-Type: application/json
 {
   "model": "18d",
   "brand": "OnePlus",
-  "year_production": "2024-01-01",
-  "size_ram": "3 GB",
+  "yearProduction": "2024-01-01",
+  "sizeRam": "3 GB",
   "cpu": "Snapdragon 8 Gen 2",
-  "screen_diagonal": "6.78",
-  "is_nfc": true
+  "screenDiagonal": "6.78",
+  "isNfc": true
 }
 
 # 500
@@ -30,9 +30,9 @@ Content-Type: application/json
 {
   "model": "1",
   "brand": "OnePlus",
-  "year_production": "2024-01-01",
-  "size_ram": "3 GB",
-  "cpu": "Snapdragon 8 Gen 2",
+  "yearProduction": "2024-01-01",
+  "sizeRam": "3 GB",
+  "cpu": "Snapdragon 8 Gen 2"
 }
 
 
@@ -43,11 +43,11 @@ Content-Type: application/json
 {
   "model": "17A",
   "brand": "Samsung",
-  "year_production": "2025-01-01",
-  "size_ram": "8",
+  "yearProduction": "2025-01-01",
+  "sizeRam": "8 GB",
   "cpu": "Snapdragon 8 Gen 2",
-  "screen_diagonal": "6.3",
-  "is_nfc": true
+  "screenDiagonal": "6.3",
+  "isNfc": true
 }
 
 # 422
@@ -55,7 +55,7 @@ PATCH http://localhost:5000/api/phone/2
 Content-Type: application/json
 
 {
-  "is_nfc": 45
+  "isNfc": 45
 }
 
 DELETE http://localhost:5000/api/phone/7

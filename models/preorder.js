@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       Preorder.belongsTo(models.Phone, {
-        foreignKey: 'phone_id',
+        foreignKey: 'phoneId',
         onDelete: 'RESTRICT',
         onUpdate: 'CASCADE',
       });
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Preorder.init(
     {
-      date_processing: {
+      dateProcessing: {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
@@ -25,16 +25,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.ENUM('done', 'pending', 'confirmed'),
         allowNull: false,
       },
-      count_phone: {
+      countPhone: {
         type: DataTypes.INTEGER,
         defaultValue: 1,
         allowNull: false,
       },
-      client_phone_number: {
+      clientPhoneNumber: {
         type: DataTypes.STRING(14),
         allowNull: false,
       },
-      phone_id: {
+      phoneId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -46,6 +46,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Preorder',
+      tableName: 'Preorders',
+      underscored: true,
     }
   );
   return Preorder;

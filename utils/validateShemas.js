@@ -49,7 +49,28 @@ const PHONE_CREATE_VALIDATE_SCHEMAS = yup.object({
     .required("Наявність NFC є обов'язковою"),
 });
 
+const PREORDER_CREATE_VALIDATE_SCHEMAS = yup.object({
+  dateProcessing: yup
+    .string()
+    .matches(/^\d{4}-\d{2}-\d{2}$/, 'Введіть коректну дату')
+    .required("Дата обробки є обов'язковою"),
+  status: yup
+    .string()
+    .oneOf(['done', 'pending', 'confirmed'], 'Статус має бути: done, pending або confirmed')
+    .required("Статус є обов'язковим"),
+  countPhone: yup
+    .number()
+    .integer()
+    .min(1)
+    .required("Кількість телефонів є обов'язковою"),
+  clientPhoneNumber: yup
+    .string()
+    .matches(/^\+\d{10,13}$/, 'Введіть коректний номер телефону')
+    .required("Номер клієнта є обов'язковим"),
+});
+
 module.exports = {
   PHONE_UPDATE_VALIDATE_SCHEMAS,
   PHONE_CREATE_VALIDATE_SCHEMAS,
+  PREORDER_CREATE_VALIDATE_SCHEMAS,
 };

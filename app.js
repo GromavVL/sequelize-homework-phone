@@ -4,6 +4,7 @@ const { errorHandler } = require('./middleware');
 
 const app = express();
 app.use(express.json());
+app.use('/images', express.static('public/image'));
 app.use('/api', router);
 app.use(errorHandler.validationErrorHandler);
 app.use(errorHandler.globalErrorHandler);

@@ -1,4 +1,4 @@
-const { Phone } = require('./../models');
+const { Phone, Preorder } = require('./../models');
 
 module.exports.getPhones = async (req, res, next) => {
   const { limit, offset } = req.paginate;
@@ -69,6 +69,68 @@ module.exports.updatePhoneById = async (req, res, next) => {
     next(err);
   }
 };
+module.exports.getPreordersByPhoneId = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const phone = await Phone.findByPk(id);
+
+    if (!phone) {
+      return res.status(404).send('Phone not found');
+    }
+
+    const preorders = await Preorder.findAll({
+      raw: true,
+      attributes: { exclude: ['createdAt', 'updatedAt'] },
+      where: { phoneId: id },
+      order: [['id', 'ASC']],
+    });
+
+    res.status(200).send(preorders);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.createPreordersByPhone = async (req, res, next) => {
+  const {
+    body,
+    params: { id },
+  } = req;
+
+  try {
+    const phone = await Phone.findByPk(id);
+    if (!phone) {
+      return res.status(404).send('Phone not found');
+    }
+
+    const preorder = await Preorder.create({ ...body, phoneId: id });
+
+    res.status(201).send(preorder);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.uploadPhoneImage = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    if (!req.file) {
+      return res.status(400).send('Файл не надіслано');
+    }
+    const phone = await Phone.findByPk(id);
+    if (!phone) {
+      return res.status(404).send('Phone not found');
+    }
+
+    await phone.update({ imagePhone: req.file.filename });
+
+    res.status(200).send({ imagePhone: req.file.filename });
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports.deletePhoneById = async (req, res, next) => {
   const { id } = req.params;
   try {

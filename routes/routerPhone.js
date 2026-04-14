@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { phoneController } = require('./../controllers');
-const { validate, paginate } = require('./../middleware');
+const { validate, paginate, upload } = require('./../middleware');
 const phoneRouter = Router();
 
 phoneRouter
@@ -13,5 +13,14 @@ phoneRouter
   .get(phoneController.getPhoneById)
   .patch(validate.validateOnUpdatePhone, phoneController.updatePhoneById)
   .delete(phoneController.deletePhoneById);
+
+phoneRouter
+  .route('/:id/image')
+  .post(upload.single('imagePhone'), phoneController.uploadPhoneImage);
+
+phoneRouter
+  .route('/:id/preorders')
+  .get(phoneController.getPreordersByPhoneId)
+  .post(validate.validateOnCreatePreorder, phoneController.createPreordersByPhone);
 
 module.exports = phoneRouter;

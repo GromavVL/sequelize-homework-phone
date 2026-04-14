@@ -14,8 +14,8 @@ module.exports = {
           cpu: 'Snapdragon 8 Gen 3',
           screen_diagonal: '6.2"',
           is_nfc: true,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
           model: 'iPhone 15',
@@ -25,8 +25,8 @@ module.exports = {
           cpu: 'Apple A16 Bionic',
           screen_diagonal: '6.1"',
           is_nfc: true,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
           model: 'Redmi Note 13',
@@ -36,8 +36,8 @@ module.exports = {
           cpu: 'Mediatek Helio G99',
           screen_diagonal: '6.67"',
           is_nfc: false,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
           model: 'Pixel 8',
@@ -47,8 +47,8 @@ module.exports = {
           cpu: 'Google Tensor G3',
           screen_diagonal: '6.2"',
           is_nfc: true,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
           model: '12R',
@@ -58,8 +58,8 @@ module.exports = {
           cpu: 'Snapdragon 8 Gen 2',
           screen_diagonal: '6.78"',
           is_nfc: true,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          created_at: new Date(),
+          updated_at: new Date()
         }
       ],
       {}

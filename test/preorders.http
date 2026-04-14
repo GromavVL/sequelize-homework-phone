@@ -1,0 +1,35 @@
+
+
+GET http://localhost:5000/api/phones/2/preorders
+
+# 404
+GET http://localhost:5000/api/phones/1000/preorders
+
+GET http://localhost:5000/api/preorders
+
+
+GET http://localhost:5000/api/preorders?status=pending
+
+
+POST http://localhost:5000/api/phones/2/preorders
+Content-Type: application/json
+
+{
+  "dateProcessing": "2026-05-01",
+  "status": "pending",
+  "countPhone": 1,
+  "clientPhoneNumber": "+380991234567"
+}
+
+###
+
+# 404
+POST http://localhost:5000/api/phones/1000/preorders
+Content-Type: application/json
+
+{
+  "dateProcessing": "2026-05-01",
+  "status": "pending",
+  "countPhone": 2,
+  "clientPhoneNumber": "+380991234567"
+}
